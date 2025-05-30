@@ -1,0 +1,20 @@
+version: "1.0"
+
+services:
+  api:
+    build: . 
+    ports:
+      - "8000:8000"
+    env_file: ".env"
+    restart: always
+
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - "8080:27017"
+    volumes:
+      - db_volume:/data/db
+
+volumes:
+  db_volume:
